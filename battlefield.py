@@ -27,4 +27,23 @@ class Battlefield:
                 print("This is not a valid answer.")
                 answer = ""
 
-    
+
+
+
+    def battle(self):
+        pass
+
+    def player_1_turn(self):
+        # playe_one . gesture_choice 
+        player_
+        pass
+
+    def player_2_turn(self):
+        #player_two.gesture_choice
+        pass
+
+    def compare_gestures(self):
+        
+
+        pass
+    #if else --> assign points 
