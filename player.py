@@ -6,5 +6,6 @@ class Player:
         self.gesture_choice = ""
         
 
-    def gesture (self):
+    def gesture(self):
      pass
+
