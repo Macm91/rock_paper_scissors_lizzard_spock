@@ -62,16 +62,21 @@ class Battlefield:
         pass
 
 
+
     def compare_gestures(self):
-        self.rock_gesture
-        self.scissors_gesture
-        self.paper_gesture
-        self.lizard_gestures
-        self.spock_gestures
-
+        if (self.player_one.gesture == self.rock or self.player_two.gesture == self.rock):
+            self.rock_gesture
+        elif (self.player_one.gesture == self.scissors or self.player_two.gesture == self.scissors):
+            self.scissors_gesture
+        elif (self.player_one.gesture == self.paper or self.player_two.gesture == self.paper):
+            self.paper_gesture
+        elif (self.player_one.gesture == self.lizard or self.player_two.gesture == self.lizard):
+            self.lizard_gestures
+        elif (self.player_one.gesture == self.spock or self.player_two.gesture == self.spock):
+            self.spock_gestures
         pass
-    #if else --> assign points 
 
+#gesture functions
     def rock_gesture(self):
         if (self.player_1_turn == self.rock and (self.player_2_turn == self.scissors or self.player_2_turn == self.lizard)):
             self.player_one.score += 1
