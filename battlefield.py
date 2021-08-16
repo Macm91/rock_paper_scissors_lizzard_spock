@@ -5,7 +5,7 @@ from human_player import Human_player
 class Battlefield:
     def __init__(self):
         self.player_one = Human_player(input ("Please enter your name."))
-        self.player_two = []
+        self.player_two = AI_Player()
         pass
 
     def run_game(self):
@@ -27,4 +27,4 @@ class Battlefield:
                 print("This is not a valid answer.")
                 answer = ""
 
-    
+

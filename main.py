@@ -5,9 +5,9 @@ from battlefield import Battlefield
 game = Battlefield() 
 
 game.game_mode()
+game.prompt_gesture()
 
+print(game.player_one.gesture_choice)
+print(game.player_two.gesture_choice)
 
-# test = AI_Player()
-# test.gesture()
-# print(test.gesture_choice)
-# print(test.name)
+game.validate_rock()
