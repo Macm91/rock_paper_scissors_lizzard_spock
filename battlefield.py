@@ -1,11 +1,21 @@
+from _typeshed import Self
 from ai_player import AI_Player
 from human_player import Human_player
+from player import Player
 
 
 class Battlefield:
     def __init__(self):
         self.player_one = Human_player(input ("Please enter your name."))
         self.player_two = AI_Player()
+
+        self.player_one_choice = Human_player.gesture_choice 
+        self.player_two_choice = ""
+        self.rock = 1
+        self.paper = 2
+        self.scissors = 3
+        self.lizard = 4
+        self.spock = 5
         pass
 
     def run_game(self):
@@ -26,5 +36,6 @@ class Battlefield:
             else:
                 print("This is not a valid answer.")
                 answer = ""
+        
 
 
