@@ -1,11 +1,10 @@
 from ai_player import AI_Player
 from human_player import Human_player
-from player import Player
 
 
 class Battlefield:
     def __init__(self):
-        self.player_one = Human_player(input ("Please enter your name."))
+        self.player_one = ""
         self.player_two = AI_Player()
         pass
 
@@ -17,6 +16,7 @@ class Battlefield:
         pass
     
     def game_mode(self):
+        self.player_one = Human_player(input ("Please enter your name."))
         answer = ""
         while answer == "":
             answer = input("How many players? Please enter '1' or '2' :: ")
