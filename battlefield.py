@@ -39,6 +39,7 @@ class Battlefield:
             self.compare_gestures()
             pass
         self.display_winner()
+        self.play_again()
     
 
 #Initiates the gesture choice in human_player method function. 
