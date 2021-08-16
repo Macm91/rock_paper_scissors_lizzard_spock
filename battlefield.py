@@ -1,4 +1,3 @@
-from _typeshed import Self
 from ai_player import AI_Player
 from human_player import Human_player
 from player import Player
@@ -7,19 +6,13 @@ from player import Player
 class Battlefield:
     def __init__(self):
         self.player_one = Human_player(input ("Please enter your name."))
-        self.player_two = []
-        self.player_one_choice = Human_player.gesture_choice 
-        self.player_two_choice = ""
-        self.rock = 1
-        self.paper = 2
-        self.scissors = 3
-        self.lizard = 4
-        self.spock = 5
+        self.player_two = AI_Player()
         pass
 
     def run_game(self):
         print (f"Welcome {self.player_one.name}")
-        #Put the rules and other welcome messages here
+    #print rules
+
         pass
     
     def game_mode(self):
@@ -37,89 +30,97 @@ class Battlefield:
                 answer = ""
         
 
-
 #calls player 1 and player 2 choices and compares them.
     def battle(self):
-        while len(self.player_one.score) < 3 and len(self.player_two.score) < 3:
-            self.player_1_turn
-            self.player_2_turn
-            self.compare_gestures
-        
-        self.display_winner
-        pass
+        while self.player_one.score < 3 and self.player_two.score < 3:
+            self.player_1_turn()
+            self.player_2_turn()
+            self.compare_gestures()
+            pass
+        self.display_winner()
+    
 
 #Initiates the gesture choice in human_player method function. 
     def player_1_turn(self):
-        self.player_one_choice 
-        pass
+       self.player_one.gesture()
+        
 
 #either initiates gesture choice in human or ai player method functions. 
     def player_2_turn(self):
-        if (self.player_two == AI_Player):
-            self.player_two_choice = AI_Player.gesture_choice
-        else:
-            self.player_two_choice = Human_player.gesture_choice
-        pass
+        self.player_two.gesture()
 
 
 
     def compare_gestures(self):
-        if (self.player_one.gesture == self.rock or self.player_two.gesture == self.rock):
-            self.rock_gesture
-        elif (self.player_one.gesture == self.scissors or self.player_two.gesture == self.scissors):
-            self.scissors_gesture
-        elif (self.player_one.gesture == self.paper or self.player_two.gesture == self.paper):
-            self.paper_gesture
-        elif (self.player_one.gesture == self.lizard or self.player_two.gesture == self.lizard):
-            self.lizard_gestures
-        elif (self.player_one.gesture == self.spock or self.player_two.gesture == self.spock):
-            self.spock_gestures
+        if self.player_one.gesture_choice == 1:
+            self.rock_gesture()
+        elif self.player_one.gesture_choice == 3:
+            self.scissors_gesture()
+        elif self.player_one.gesture_choice == 2:
+            self.paper_gesture()
+        elif self.player_one.gesture_choice == 4:
+            self.lizard_gestures()
+        else:
+            self.spock_gestures()
         pass
 
 #gesture functions
     def rock_gesture(self):
-        if (self.player_1_turn == self.rock and (self.player_2_turn == self.scissors or self.player_2_turn == self.lizard)):
+        if (self.player_two.gesture_choice == 3 or self.player_two.gesture_choice == 4): #What player two needs to lose
             self.player_one.score += 1
-        
-        elif (self.player_2_turn == self.rock and (self.player_1_turn == self.scissors or self.player_1_turn == self.lizard)):
+            print(f'{self.player_one.name} has won!')
+        elif (self.player_two.gesture_choice == 2 or self.player_two.gesture_choice == 5): #what player 2 needs to win
             self.player_two.score += 1
-
+        
+        else:
+            print ("It's a tie!")
         pass
 
     def scissors_gesture(self):
-        if (self.player_1_turn == self.scissors and (self.player_2_turn == self.paper or self.player_2_turn == self.lizard)):
+        if (self.player_two.gesture_choice == 2 or self.player_two.gesture_choice == 4):
             self.player_one.score += 1
-            print (f"{self.player_one} wins this round")
-        elif (self.player_2_turn == self.scissors and (self.player_1_turn == self.paper or self.player_1_turn == self.lizard)):
+            print (f"{self.player_one} wins this round.")
+        elif (self.player_two.gesture_choice == 1 or self.player_two.gesture_choice == 5):
             self.player_two.score += 1
-            print (f"{self.player_two} wins this round")
+        else:
+            print("It's a tie.")
         pass
 
     def paper_gesture(self):
-        if (self.player_1_turn == self.paper and (self.player_2_turn == self.rock or self.player_2_turn == self.spock)):
+        if (self.player_two.gesture_choice == 1 or self.player_two.gesture_choice == 5):
             self.player_one.score += 1
-            print (f"{self.player_one} wins this round")
-        elif (self.player_2_turn == self.paper and (self.player_2_turn == self.rock or self.player_2_turn == self.spock)):
+            print (f"{self.player_one} wins this round.")
+        elif (self.player_two.gesture_choice == 3 or self.player_two.gesture_choice == 4):
             self.player_two.score += 1
-            print (f"{self.player_two} wins this round")
+            print (f'{self.player_two} wins this round.')
+        else:
+            print("It's a tie")
         pass
 
     def lizard_gestures(self):
-        if (self.player_1_turn == self.lizard and (self.player_2_turn == self.spock or self.player_2_turn == self.paper)):
+        if (self.player_two.gesture_choice== 2 or self.player_two.gesture_choice == 5):
             self.player_one.score += 1
-            print (f"{self.player_one} wins this round")
-        elif (self.player_2_turn == self.lizard and (self.player_2_turn == self.spock or self.player_2_turn == self.paper)):
+            print (f"{self.player_one} wins this round.")
+        elif (self.player_two.gesture_choice == 3 or self.player_two.gesture_choice == 1):
             self.player_two.score += 1
-            print (f"{self.player_two} wins this round")
+            print (f'{self.player_two} wins this round.')
+        else:
+            print("It's a tie")
+        pass
 
     def spock_gestures(self):
-        if (self.player_1_turn == self.spock and (self.player_2_turn == self.scissors or self.player_2_turn == self.rock)):
+        if (self.player_two.gesture_choice == 1 or self.player_two.gesture_choice == 3):
             self.player_one.score += 1
-            print (f"{self.player_one} wins this round")
-        elif (self.player_2_turn == self.spock and (self.player_2_turn == self.scissors or self.player_2_turn == self.rock)):
-            self.player_two.score += 1
-            print (f"{self.player_two} wins this round")
+            print (f"{self.player_one} wins this round.")
 
+        elif (self.player_two.gesture_choice == 2 or self.player_two.gesture_choice == 4):
+            self.player_two.score += 1
+            print (f'{self.player_two} wins this round.')
+        else:
+            print("It's a tie")
+        pass
+
+##gesture functions end 
 
     def display_winner(self):
         if (self.player_one.score == 3):
