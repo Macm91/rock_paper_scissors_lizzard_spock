@@ -6,4 +6,3 @@ game = Battlefield()
 game.game_mode()
 
 game.battle()
-
